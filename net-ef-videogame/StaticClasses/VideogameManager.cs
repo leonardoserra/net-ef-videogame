@@ -1,4 +1,5 @@
-﻿using net_ef_videogame.Database;
+﻿using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
+using net_ef_videogame.Database;
 using net_ef_videogame.Models;
 using System;
 using System.Collections.Generic;
@@ -49,18 +50,30 @@ namespace net_ef_videogame.StaticClasses
                 if (createdVideogames > 0)
                     Console.WriteLine($"Completato. + {createdVideogames} Videogames al database!");
                 Console.WriteLine("Ecco la lista dei videogames presenti nel database: ");
-                PrintVideogamesList(db);
+                PrintAndReturnVideogamesList(db);
                 Console.WriteLine();
 
 
             }
         }
-        public static void PrintVideogamesList(VideogamesContext db)
+        public static List<Videogame> PrintAndReturnVideogamesList(VideogamesContext db)
         {
             List<Videogame> videogames = db.Videogames.OrderBy(vg => vg.Id).ToList();
             foreach (Videogame vgInDb in videogames)
             {
-                Console.WriteLine($"ID: {vgInDb.Id} - Nome: {vgInDb.Name}");
+                Console.WriteLine(vgInDb);
+            }
+            return videogames;
+        }
+        public static Videogame SearchAndPrintVideogameByID(long id)
+        {
+            using (VideogamesContext db = new VideogamesContext())
+            {
+                Videogame videogameFound = db.Videogames.Where(vg => vg.Id == id).First();
+                Console.WriteLine(videogameFound);
+
+                return videogameFound;
+
             }
         }
     }

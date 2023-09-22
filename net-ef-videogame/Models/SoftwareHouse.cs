@@ -35,5 +35,10 @@ namespace net_ef_videogame.Models
 
         [Column("videogames")]
         public List<Videogame>? Videogames { get; set; }
+
+        public override string ToString()
+        {
+            return $"ID: {SoftwareHouseId} - Nome: {Name}";
+        }
     }
 }

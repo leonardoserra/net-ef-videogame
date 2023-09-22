@@ -43,7 +43,7 @@ namespace net_ef_videogame.Models
 
         public override string ToString()
         {
-            return $"ID: {Id},\r\nName: {Name}";
+            return $"ID: {Id} - Name: {Name}";
         }
     }
 }

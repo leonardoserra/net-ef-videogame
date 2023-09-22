@@ -51,6 +51,7 @@ namespace net_ef_videogame
                         {
                             Console.Write("Digita l'id del gioco che vuoi cercare: ");
                             long id = long.Parse(Console.ReadLine());
+                            VideogameManager.SearchAndPrintVideogameByID(id);
                             Console.WriteLine();
 
                         }
@@ -109,7 +110,7 @@ namespace net_ef_videogame
                         {
                             using(VideogamesContext db = new VideogamesContext())
                             {
-                                VideogameManager.PrintVideogamesList(db);
+                                VideogameManager.PrintAndReturnVideogamesList(db);
                             }
                         }
                         catch (Exception ex)

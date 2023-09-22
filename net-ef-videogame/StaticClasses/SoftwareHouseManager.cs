@@ -65,7 +65,7 @@ namespace net_ef_videogame.StaticClasses
             List<SoftwareHouse> softwareHouses = db.SoftwareHouses.OrderBy(sh => sh.SoftwareHouseId).ToList();
             foreach (SoftwareHouse shInDb in softwareHouses)
             {
-                Console.WriteLine($"ID: {shInDb.SoftwareHouseId} - Nome: {shInDb.Name}");
+                Console.WriteLine(shInDb);
             }
         }
     }
