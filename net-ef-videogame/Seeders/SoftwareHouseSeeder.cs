@@ -16,6 +16,7 @@ namespace net_ef_videogame.Seeders
             int quantityToCreate = int.Parse(Console.ReadLine()); 
             using (VideogamesContext db = new VideogamesContext())
             {
+                int createdSoftwareHouses = 0;
                 for (int i = 0; i < quantityToCreate; i++)
                 {
                     Console.WriteLine($"Crea Software House n.{i + 1}");
@@ -31,6 +32,8 @@ namespace net_ef_videogame.Seeders
                     {
                         SoftwareHouse sh = new SoftwareHouse() { Name = name, TaxId = taxId, City = city, Country = country };
                         db.Add(sh);
+                        createdSoftwareHouses  += db.SaveChanges();
+
                     }
                     catch (Exception ex)
                     {
@@ -40,6 +43,19 @@ namespace net_ef_videogame.Seeders
 
                     }
                 }
+                if (createdSoftwareHouses > 0)
+                    Console.WriteLine($"aggiunte {createdSoftwareHouses} Software Houses al database!");
+                Console.WriteLine();
+                Console.WriteLine("Ecco la lista delle Software Houses nel database: ");
+                Console.WriteLine();
+                List<SoftwareHouse> softwareHouses = db.SoftwareHouses.OrderBy(sh => sh.SoftwareHouseId).ToList<SoftwareHouse>();
+                foreach (SoftwareHouse shInDb in softwareHouses)
+                {
+                    Console.WriteLine($"{shInDb.SoftwareHouseId} - {shInDb.Name}");
+                }
+                Console.WriteLine();
+
+
             }
         }
     }

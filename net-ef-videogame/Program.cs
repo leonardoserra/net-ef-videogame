@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using net_ef_videogame.Database;
 
 using net_ef_videogame.Models;
+using net_ef_videogame.Seeders;
 
 namespace net_ef_videogame
 {
@@ -109,6 +110,14 @@ namespace net_ef_videogame
                         break;
                     case 5:
                         //Inserisci una nuova Software House
+                        try
+                        {
+                            SoftwareHouseSeeder.PopulateTableSoftwareHouse();
+
+                        }catch(Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
 
                         break;
                     case 6:
