@@ -22,7 +22,7 @@ namespace net_ef_videogame.Models
         public string? Name { get; set; }
 
 
-        [Column("tax_id"),MaxLength(11)]
+        [Column("tax_id"),MaxLength(11), MinLength(11)]
         public string? TaxId {  get; set; }
 
 

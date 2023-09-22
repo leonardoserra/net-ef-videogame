@@ -48,6 +48,12 @@ namespace net_ef_videogame
                                 long softwareHouseId = long.Parse(Console.ReadLine());
                                 Console.WriteLine();
 
+                                using(VideogamesContext db = new VideogamesContext())
+                                {
+
+
+                                }
+
                                 
 
                                 Console.WriteLine();
