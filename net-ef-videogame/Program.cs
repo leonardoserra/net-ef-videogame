@@ -80,9 +80,9 @@ namespace net_ef_videogame
                         //Cancellare un videogioco
                         try
                         {
-                            Console.WriteLine("Digita l'id del videogioco da cancellare");
-                            long idToDelete = long.Parse(Console.ReadLine());
-                           
+
+                            bool success = VideogameManager.DeleteVideogameByID();
+                            Console.WriteLine(success ? "Gioco eliminato!" : "Problemi con l'eliminazione del Videogioco riprova...");
                         }
                         catch (Exception ex)
                         {

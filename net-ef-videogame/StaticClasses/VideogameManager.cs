@@ -90,6 +90,29 @@ namespace net_ef_videogame.StaticClasses
             }
 
         }
+        public static bool DeleteVideogameByID()
+        {
+            using (VideogamesContext db = new VideogamesContext())
+            {
+                try
+                {
+                    Console.WriteLine("Digita l'id del gioco che vuoi eliminare: ");
+                    PrintAndReturnVideogamesList(db);
+                    long idToDelete = long.Parse(Console.ReadLine());
+                    Videogame videogameFound = db.Videogames.Where(vg => vg.Id == idToDelete).First();
+                    db.Remove(videogameFound);
+                    db.SaveChanges();
+                
+                    return true;
+
+                }catch(Exception ex)
+                {
+                    Console.WriteLine("Id non appartenente a nessun Videogame!");
+                    return false;
+                }
+               
+            }
+        }
 
     }
 }
