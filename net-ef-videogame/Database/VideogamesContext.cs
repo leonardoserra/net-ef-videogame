@@ -9,5 +9,6 @@ namespace net_ef_videogame.Database
 {
     internal class VideogamesContext :DbContext
     {
+
     }
 }

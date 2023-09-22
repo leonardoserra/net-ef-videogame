@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
+using System.Xml.Linq;
 
 namespace net_ef_videogame.Models
 
@@ -15,17 +16,28 @@ namespace net_ef_videogame.Models
     [Table("videogames")]
     public class Videogame
     {
-        [Key]
+        [Key,Column("id")]
         public long Id { get; set; }
-        [Required]
-        public string Name { get; set; }
-        [DefaultValue("")]
-        public string Overview { get; set; }
-        [Required]
+
+
+        [Required,Column("name")]
+        public string? Name { get; set; }
+
+
+        [DefaultValue(""), Column("overwiev")]
+        public string? Overview { get; set; }
+
+
+        [Required, Column("release_date")]
         public DateTime ReleaseDate{ get; set; }
-        
+
+
+        [Column("software_house_id")]
         public long? SoftwarehouseId{ get; set; }
-        public SoftwareHouse SoftwareHouse { get; set; }
+
+
+        [Column("software_house")]
+        public SoftwareHouse? SoftwareHouse { get; set; }
 
        
 

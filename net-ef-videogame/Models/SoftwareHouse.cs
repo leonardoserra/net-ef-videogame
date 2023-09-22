@@ -13,5 +13,26 @@ namespace net_ef_videogame.Models
 {
     public class SoftwareHouse
     {
+        [Key]
+        [Column("software_house_id")]
+        public long SoftwareHouseId { get; set; }
+
+
+        [Column("name"),Required]
+        public string? Name { get; set; }
+
+
+        [Column("tax_id"),MaxLength(11)]
+        public string? TaxId {  get; set; }
+
+
+        [Column("city"),MaxLength(50)]
+        public string? City {  get; set; }
+
+        [Column("country"),MaxLength(50)]
+        public string? Country {  get; set; }
+
+        [Column("videogames")]
+        public List<Videogame>? Videogames { get; set; }
     }
 }
