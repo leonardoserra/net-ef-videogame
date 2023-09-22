@@ -22,8 +22,8 @@ namespace net_ef_videogame
             3. Cerca per nome (anche parziale)
             4. Cancellare un videogioco
             5. Inserisci una nuova Software House
-            6. Chiudere il programma
-
+            6. Cerca videogame per Software House (BONUS!!!)
+            7. Spegni
             ");
 
                 int selectedOperation = int.Parse(Console.ReadLine());
@@ -102,6 +102,10 @@ namespace net_ef_videogame
 
                         break;
                     case 6:
+                        //BONUS Cerca Videogiochi per Software House
+                        VideogameManager.SearchVideogameBySoftwareHouseId();
+                        break;
+                    case 7:
                         //Chiudere il programma
                         programExecuting = false;
                         ExitAnimation();

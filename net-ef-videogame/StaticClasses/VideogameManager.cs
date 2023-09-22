@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
 using net_ef_videogame.Database;
 using net_ef_videogame.Models;
 using System;
@@ -111,6 +113,26 @@ namespace net_ef_videogame.StaticClasses
                     return false;
                 }
                
+            }
+        }
+        public static List<Videogame> SearchVideogameBySoftwareHouseId()
+        {
+            using(VideogamesContext db=new VideogamesContext())
+            {
+                Console.WriteLine("Digita l'id per ricevere la lista dei giochi di quella Software House: ");
+                SoftwareHouseManager.PrintSoftwareHousesList(db);
+                long softwareHouseId = long.Parse(Console.ReadLine());
+                List<Videogame> videogames = db.Videogames.OrderBy(vg => vg.Id).Include(vg => vg.SoftwareHouse).Where(vg => vg.SoftwareHouse.SoftwareHouseId == softwareHouseId).ToList();
+                if(videogames.Count == 0)
+                {
+                    throw new Exception("Nessun Videogame corrispondente a quella Software House");
+                }
+
+                foreach(Videogame vg in videogames)
+                {
+                    Console.WriteLine(vg);
+                }
+                return videogames;
             }
         }
 
