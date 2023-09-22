@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace net_ef_videogame.Database
 {
-    internal class VideogamesContext :DbContext
+    public class VideogamesContext :DbContext
     {
         public DbSet<Videogame> Videogames { get; set; }
         public DbSet<SoftwareHouse> SoftwareHouses { get; set; }

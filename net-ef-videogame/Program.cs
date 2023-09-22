@@ -4,6 +4,7 @@ using net_ef_videogame.Database;
 
 using net_ef_videogame.Models;
 using net_ef_videogame.Seeders;
+using net_ef_videogame.StaticClasses;
 
 namespace net_ef_videogame
 {
@@ -34,27 +35,7 @@ namespace net_ef_videogame
                             try
                             {
                                 //Inserire un nuovo videogioco
-                                Console.WriteLine("Inserisci i dati del videogioco");
-                                Console.WriteLine();
-                                Console.Write("\tNome: ");
-                                string name = Console.ReadLine();
-                                Console.WriteLine();
-                                Console.Write("\tInfo: ");
-                                string overview = Console.ReadLine();
-                                Console.WriteLine();
-                                Console.Write("\tData rilascio: ");
-                                DateTime releaseDate = DateTime.Parse(Console.ReadLine());
-                                Console.WriteLine();
-                                Console.Write("\tid Software House(da 0 a 6): ");
-                                long softwareHouseId = long.Parse(Console.ReadLine());
-                                Console.WriteLine();
-
-                                using(VideogamesContext db = new VideogamesContext())
-                                {
-
-
-                                }
-
+                                VideogameManager.PopulateTableVideogame();
                                 
 
                                 Console.WriteLine();
@@ -129,7 +110,10 @@ namespace net_ef_videogame
                         //stampa debug lista
                         try
                         {
-                          
+                            using(VideogamesContext db = new VideogamesContext())
+                            {
+                                VideogameManager.PrintVideogameList(db);
+                            }
                         }
                         catch (Exception ex)
                         {

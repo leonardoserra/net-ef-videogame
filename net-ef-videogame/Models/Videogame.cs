@@ -33,7 +33,7 @@ namespace net_ef_videogame.Models
 
 
         [Column("software_house_id")]
-        public long? SoftwarehouseId{ get; set; }
+        public long? SoftwareHouseId{ get; set; }
 
 
         [Column("software_house")]
