@@ -66,6 +66,8 @@ namespace net_ef_videogame
                         {
                             Console.Write("Digita il nome del gioco che vuoi cercare o una parte del nome:");
                             string name = Console.ReadLine();
+                            VideogameManager.SearchAndPrintVideogamesByName(name);
+
                             Console.WriteLine();
                            
                         }

@@ -76,5 +76,19 @@ namespace net_ef_videogame.StaticClasses
 
             }
         }
+        public static List<Videogame> SearchAndPrintVideogamesByName(string name)
+        {
+            using (VideogamesContext db = new VideogamesContext())
+            {
+                List<Videogame> videogames = db.Videogames.OrderBy(vg => vg.Id).Where(vg => vg.Name.Contains(name)).ToList();
+                foreach(Videogame vg in videogames)
+                {
+                    Console.WriteLine(vg);
+                }
+                return videogames;
+            }
+
+        }
+
     }
 }
