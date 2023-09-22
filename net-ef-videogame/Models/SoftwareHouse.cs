@@ -11,6 +11,7 @@ using System.ComponentModel;
 
 namespace net_ef_videogame.Models
 {
+    [Table("software_houses")]
     public class SoftwareHouse
     {
         [Key]

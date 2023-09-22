@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using net_ef_videogame.Database;
 
@@ -11,9 +12,10 @@ using net_ef_videogame.Database;
 namespace net_ef_videogame.Migrations
 {
     [DbContext(typeof(VideogamesContext))]
-    partial class VideogamesContextModelSnapshot : ModelSnapshot
+    [Migration("20230922141142_ModifyTableNameSoftwareHouses")]
+    partial class ModifyTableNameSoftwareHouses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
