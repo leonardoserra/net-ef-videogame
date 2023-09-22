@@ -17,7 +17,7 @@ namespace net_ef_videogame
             {
                 Console.WriteLine(@"Seleziona l'operazione da effettuare: 
 
-            1. Inserire un nuovo videogioco PROVA
+            1. Inserire un nuovo videogioco
             2. Cerca per id 
             3. Cerca per nome (anche parziale)
             4. Cancellare un videogioco
@@ -35,8 +35,6 @@ namespace net_ef_videogame
                             {
                                 //Inserire un nuovo videogioco
                                 VideogameManager.PopulateTableVideogame();
-                                
-
                                 Console.WriteLine();
 
                             }

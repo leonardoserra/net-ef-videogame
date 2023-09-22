@@ -13,7 +13,7 @@ namespace net_ef_videogame.StaticClasses
         public static void PopulateTableVideogame()
         {
 
-            Console.Write("Quante Videogames vuoi creare? ");
+            Console.Write("Quanti Videogames vuoi creare? ");
             int quantityToCreate = int.Parse(Console.ReadLine());
             using (VideogamesContext db = new VideogamesContext())
             {
@@ -25,16 +25,13 @@ namespace net_ef_videogame.StaticClasses
                     string name = Console.ReadLine();
                     Console.Write("Descrizione: ");
                     string overwiev = Console.ReadLine();
-                    Console.Write("Descrizione: ");
+                    Console.Write("Data Rilascio: ");
                     DateTime date = DateTime.Parse(Console.ReadLine());
-                    Console.Write("Country: ");
-                    string country = Console.ReadLine();
-                    Console.WriteLine("Ecco la lista delle Software Houses nel database: ");
-                    Console.WriteLine();
                     SoftwareHouseManager.PrintSoftwareHousesList(db);
-                    Console.Write("Software House ID: ");
                     Console.WriteLine();
+                    Console.Write("Scegli la Software Houses: ");
                     long softwareHouseId = long.Parse(Console.ReadLine());
+                    Console.WriteLine();
                     try
                     {
                         Videogame vg = new Videogame() { Name = name, Overview = overwiev, ReleaseDate = date, SoftwareHouseId = softwareHouseId };
@@ -51,8 +48,8 @@ namespace net_ef_videogame.StaticClasses
                 }
                 if (createdVideogames > 0)
                     Console.WriteLine($"Completato. + {createdVideogames} Videogames al database!");
-                Console.WriteLine();
-
+                Console.WriteLine("Ecco la lista dei videogames presenti nel database: ");
+                PrintVideogamesList(db);
                 Console.WriteLine();
 
 
