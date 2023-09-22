@@ -80,7 +80,8 @@ namespace net_ef_videogame.StaticClasses
         {
             using (VideogamesContext db = new VideogamesContext())
             {
-                List<Videogame> videogames = db.Videogames.OrderBy(vg => vg.Id).Where(vg => vg.Name.Contains(name)).ToList();
+                string lowerName = name.ToLower();
+                List<Videogame> videogames = db.Videogames.OrderBy(vg => vg.Id).Where(vg => vg.Name.ToLower().Contains(lowerName)).ToList();
                 foreach(Videogame vg in videogames)
                 {
                     Console.WriteLine(vg);
