@@ -24,6 +24,12 @@ namespace net_ef_videogame.Seeders
                     string name = Console.ReadLine();
                     Console.Write("P.Iva (11 caratteri): ");
                     string taxId = Console.ReadLine();
+                    if (taxId == null|| taxId.Length != 11)
+                    {
+                        Console.WriteLine("Inserire esattamente 11 caratteri");
+                        i--;
+                        continue;
+                    }
                     Console.Write("City: ");
                     string city = Console.ReadLine();
                     Console.Write("Country: ");
@@ -32,7 +38,7 @@ namespace net_ef_videogame.Seeders
                     {
                         SoftwareHouse sh = new SoftwareHouse() { Name = name, TaxId = taxId, City = city, Country = country };
                         db.Add(sh);
-                        createdSoftwareHouses  += db.SaveChanges();
+                        createdSoftwareHouses += db.SaveChanges();
 
                     }
                     catch (Exception ex)
@@ -40,18 +46,17 @@ namespace net_ef_videogame.Seeders
                         Console.WriteLine("Problema con la creazione della Software House");
                         Console.WriteLine(ex.Message);
                         i--;
-
                     }
                 }
                 if (createdSoftwareHouses > 0)
-                    Console.WriteLine($"aggiunte {createdSoftwareHouses} Software Houses al database!");
+                    Console.WriteLine($"Completato. + {createdSoftwareHouses} Software Houses al database!");
                 Console.WriteLine();
                 Console.WriteLine("Ecco la lista delle Software Houses nel database: ");
                 Console.WriteLine();
                 List<SoftwareHouse> softwareHouses = db.SoftwareHouses.OrderBy(sh => sh.SoftwareHouseId).ToList<SoftwareHouse>();
                 foreach (SoftwareHouse shInDb in softwareHouses)
                 {
-                    Console.WriteLine($"{shInDb.SoftwareHouseId} - {shInDb.Name}");
+                    Console.WriteLine($"Id: {shInDb.SoftwareHouseId} - Nome: {shInDb.Name}");
                 }
                 Console.WriteLine();
 
