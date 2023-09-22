@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore.Design;
 using net_ef_videogame.Database;
 
 using net_ef_videogame.Models;
-using net_ef_videogame.Seeders;
 using net_ef_videogame.StaticClasses;
 
 namespace net_ef_videogame
@@ -93,7 +92,7 @@ namespace net_ef_videogame
                         //Inserisci una nuova Software House
                         try
                         {
-                            SoftwareHouseSeeder.PopulateTableSoftwareHouse();
+                            SoftwareHouseManager.PopulateTableSoftwareHouse();
 
                         }catch(Exception ex)
                         {
@@ -112,7 +111,7 @@ namespace net_ef_videogame
                         {
                             using(VideogamesContext db = new VideogamesContext())
                             {
-                                VideogameManager.PrintVideogameList(db);
+                                VideogameManager.PrintVideogamesList(db);
                             }
                         }
                         catch (Exception ex)

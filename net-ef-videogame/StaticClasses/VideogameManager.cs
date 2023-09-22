@@ -31,7 +31,7 @@ namespace net_ef_videogame.StaticClasses
                     string country = Console.ReadLine();
                     Console.WriteLine("Ecco la lista delle Software Houses nel database: ");
                     Console.WriteLine();
-                    PrintVideogameList(db);
+                    SoftwareHouseManager.PrintSoftwareHousesList(db);
                     Console.Write("Software House ID: ");
                     Console.WriteLine();
                     long softwareHouseId = long.Parse(Console.ReadLine());
@@ -58,12 +58,12 @@ namespace net_ef_videogame.StaticClasses
 
             }
         }
-        public static void PrintVideogameList(VideogamesContext db)
+        public static void PrintVideogamesList(VideogamesContext db)
         {
-            List<SoftwareHouse> softwareHouses = db.SoftwareHouses.OrderBy(sh => sh.SoftwareHouseId).ToList();
-            foreach (SoftwareHouse shInDb in softwareHouses)
+            List<Videogame> videogames = db.Videogames.OrderBy(vg => vg.Id).ToList();
+            foreach (Videogame vgInDb in videogames)
             {
-                Console.WriteLine($"ID: {shInDb.SoftwareHouseId} - Nome: {shInDb.Name}");
+                Console.WriteLine($"ID: {vgInDb.Id} - Nome: {vgInDb.Name}");
             }
         }
     }

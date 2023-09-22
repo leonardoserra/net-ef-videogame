@@ -6,14 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace net_ef_videogame.Seeders
+namespace net_ef_videogame.StaticClasses
 {
-    public static class SoftwareHouseSeeder
+    public static class SoftwareHouseManager
     {
-        public static void PopulateTableSoftwareHouse() {
+        public static void PopulateTableSoftwareHouse()
+        {
 
             Console.Write("Quante Software Houses vuoi creare? ");
-            int quantityToCreate = int.Parse(Console.ReadLine()); 
+            int quantityToCreate = int.Parse(Console.ReadLine());
             using (VideogamesContext db = new VideogamesContext())
             {
                 int createdSoftwareHouses = 0;
@@ -24,7 +25,7 @@ namespace net_ef_videogame.Seeders
                     string name = Console.ReadLine();
                     Console.Write("P.Iva (11 caratteri): ");
                     string taxId = Console.ReadLine();
-                    if (taxId == null|| taxId.Length != 11)
+                    if (taxId == null || taxId.Length != 11)
                     {
                         Console.WriteLine("Inserire esattamente 11 caratteri");
                         i--;
@@ -53,14 +54,18 @@ namespace net_ef_videogame.Seeders
                 Console.WriteLine();
                 Console.WriteLine("Ecco la lista delle Software Houses nel database: ");
                 Console.WriteLine();
-                List<SoftwareHouse> softwareHouses = db.SoftwareHouses.OrderBy(sh => sh.SoftwareHouseId).ToList<SoftwareHouse>();
-                foreach (SoftwareHouse shInDb in softwareHouses)
-                {
-                    Console.WriteLine($"Id: {shInDb.SoftwareHouseId} - Nome: {shInDb.Name}");
-                }
+                PrintSoftwareHousesList(db);
                 Console.WriteLine();
 
 
+            }
+        }
+        public static void PrintSoftwareHousesList(VideogamesContext db)
+        {
+            List<SoftwareHouse> softwareHouses = db.SoftwareHouses.OrderBy(sh => sh.SoftwareHouseId).ToList();
+            foreach (SoftwareHouse shInDb in softwareHouses)
+            {
+                Console.WriteLine($"ID: {shInDb.SoftwareHouseId} - Nome: {shInDb.Name}");
             }
         }
     }
