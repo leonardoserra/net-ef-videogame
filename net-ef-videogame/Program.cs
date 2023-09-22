@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using net_ef_videogame.Database;
-using net_ef_videogame.StaticClasses;
 
 using net_ef_videogame.Models;
 
