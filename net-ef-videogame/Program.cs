@@ -103,7 +103,14 @@ namespace net_ef_videogame
                         break;
                     case 6:
                         //BONUS Cerca Videogiochi per Software House
+                        try
+                        {
                         VideogameManager.SearchVideogameBySoftwareHouseId();
+
+                        }catch(Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
                         break;
                     case 7:
                         //Chiudere il programma
